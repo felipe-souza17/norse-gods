@@ -1,6 +1,12 @@
 import { Dimensions, StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
+  arrowBack: {
+    position: 'absolute',
+    zIndex: 2,
+    marginTop: 25,
+    marginLeft: 25
+  },
   backgroundLinear: {
     height: Dimensions.get('window').height,
     position: 'relative',

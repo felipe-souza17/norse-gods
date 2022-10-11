@@ -10,7 +10,9 @@ import { styles } from './styles'
 import { useNavigation } from '@react-navigation/native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Ionicons } from '@expo/vector-icons'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { TouchableOpacity } from 'react-native'
+
+import config from '../../config'
 
 export function About({ route }) {
   const [aboutData, setAboutData] = useState(null)
@@ -20,7 +22,9 @@ export function About({ route }) {
 
   useEffect(() => {
     const showInfo = async () => {
-      const data = await fetch(`http://192.168.15.2:3333/${api}/${id}`)
+      const data = await fetch(
+        `${config.API_URL}:${config.API_PORT}/${api}/${id}`
+      )
       const json = await data.json()
       setAboutData(json)
     }
@@ -29,6 +33,12 @@ export function About({ route }) {
 
   return (
     <View>
+      <TouchableOpacity
+        style={styles.arrowBack}
+        onPress={() => navigation.goBack()}
+      >
+        <Ionicons name="arrow-back" size={24} color="white" />
+      </TouchableOpacity>
       <LinearGradient
         colors={['#FFFFFF00', '#000000']}
         start={{ x: 0.0, y: 0.0 }}

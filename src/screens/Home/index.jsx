@@ -4,6 +4,8 @@ import { View, Text, ScrollView, Image, FlatList } from 'react-native'
 import { Card } from '../../components/Card'
 import { useNavigation } from '@react-navigation/native'
 
+import config from '../../config'
+
 import { styles } from './styles'
 
 export function Home() {
@@ -14,28 +16,28 @@ export function Home() {
 
   const navigation = useNavigation()
   useEffect(() => {
-    fetch(`http://192.168.15.2:3333/gods`)
+    fetch(`${config.API_URL}:${config.API_PORT}/gods`)
       .then(response => response.json())
       .then(data => {
         setGods(data)
       })
   }, [])
   useEffect(() => {
-    fetch(`http://192.168.15.2:3333/realms`)
+    fetch(`${config.API_URL}:${config.API_PORT}/realms`)
       .then(response => response.json())
       .then(data => {
         setRealms(data)
       })
   }, [])
   useEffect(() => {
-    fetch(`http://192.168.15.2:3333/tales`)
+    fetch(`${config.API_URL}:${config.API_PORT}/tales`)
       .then(response => response.json())
       .then(data => {
         setTales(data)
       })
   }, [])
   useEffect(() => {
-    fetch(`http://192.168.15.2:3333/civilization`)
+    fetch(`${config.API_URL}:${config.API_PORT}/civilization`)
       .then(response => response.json())
       .then(data => {
         setCivilization(data)
